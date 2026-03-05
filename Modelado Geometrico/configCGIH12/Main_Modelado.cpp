@@ -10,13 +10,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-
-
 // Shaders
 #include "Shader.h"
 
 void Inputs(GLFWwindow *window);
-
 
 const GLint WIDTH = 800, HEIGHT = 600;
 float movX=0.0f;
@@ -28,6 +25,7 @@ float rotY = 0.0f;
 float rotZ = 0.0f;
 
 //void dibujarpata(gluint vao, glint modelloc, float x, float y, float z)
+//void dibujarpata(GLuint vao, GLint modelloc, float x, float y, float z)
 //{
 //	glm::mat4 model = glm::mat4(1.0f);
 //
@@ -37,27 +35,65 @@ float rotZ = 0.0f;
 //	// 2️⃣ luego traslada (ajustando la mitad de la altura)
 //	model = glm::translate(model, glm::vec3(x, y - 0.5f, z));
 //
-//	gluniformmatrix4fv(modelloc, 1, gl_false, glm::value_ptr(model));
+//	//gluniformmatrix4fv(modelloc, 1, gl_false, glm::value_ptr(model));
 //
-//	glbindvertexarray(vao);
-//	gldrawarrays(gl_triangles, 0, 36);
-//	glbindvertexarray(0);
+//	//glbindvertexarray(vao);
+//	//gldrawarrays(gl_triangles, 0, 36);
+//	//glbindvertexarray(0);
+//
+//	glUniformMatrix4fv(modelloc, 1, GL_FALSE, glm::value_ptr(model));
+//
+//	glBindVertexArray(vao);
+//	glDrawArrays(GL_TRIANGLES, 0, 36);
+//	glBindVertexArray(0);
 //}
 
-//void DibujarPatas(GLuint VAO, GLint modelLoc, int n, float ancho, float profundidad)
+void dibujarpatas(GLuint vao, GLint modelloc, int n, float ancho, float profundidad)
+{
+	for (int i = 0; i < n; i++)
+	{
+		glm::mat4 model = glm::mat4(1.0f);
+
+		// distribución simple en las esquinas (cíclica)
+		float x = (i % 2 == 0) ? ancho : -ancho;
+		float z = (i < 2) ? profundidad : -profundidad;
+
+		// 1️⃣ escalar (forma de pata)
+		model = glm::scale(model, glm::vec3(0.2f, 2.0f, 0.2f));
+
+		// 2️⃣ trasladar a su posición
+		model = glm::translate(model, glm::vec3(x, -0.5f, z));
+
+		//gluniformmatrix4fv(modelloc, 1, gl_false, glm::value_ptr(model));
+
+		//glbindvertexarray(vao);
+		//gldrawarrays(gl_triangles, 0, 36);
+
+		glUniformMatrix4fv(modelloc, 1, GL_FALSE, glm::value_ptr(model));
+
+		glBindVertexArray(vao);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+	}
+
+	glBindVertexArray(0);
+}
+
+
+//Dibuja Patas en circulo
+
+//void DibujarPatas(GLuint VAO, GLint modelLoc, int n, float radio)
 //{
 //	for (int i = 0; i < n; i++)
 //	{
 //		glm::mat4 model = glm::mat4(1.0f);
 //
-//		// Distribución simple en las esquinas (cíclica)
-//		float x = (i % 2 == 0) ? ancho : -ancho;
-//		float z = (i < 2) ? profundidad : -profundidad;
+//		float angulo = (360.0f / n) * i;
+//		float rad = glm::radians(angulo);
 //
-//		// 1️⃣ Escalar (forma de pata)
+//		float x = radio * cos(rad);
+//		float z = radio * sin(rad);
+//
 //		model = glm::scale(model, glm::vec3(0.2f, 2.0f, 0.2f));
-//
-//		// 2️⃣ Trasladar a su posición
 //		model = glm::translate(model, glm::vec3(x, -0.5f, z));
 //
 //		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -68,30 +104,6 @@ float rotZ = 0.0f;
 //
 //	glBindVertexArray(0);
 //}
-
-void DibujarPatas(GLuint VAO, GLint modelLoc, int n, float radio)
-{
-	for (int i = 0; i < n; i++)
-	{
-		glm::mat4 model = glm::mat4(1.0f);
-
-		float angulo = (360.0f / n) * i;
-		float rad = glm::radians(angulo);
-
-		float x = radio * cos(rad);
-		float z = radio * sin(rad);
-
-		model = glm::scale(model, glm::vec3(0.2f, 2.0f, 0.2f));
-		model = glm::translate(model, glm::vec3(x, -0.5f, z));
-
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-	}
-
-	glBindVertexArray(0);
-}
 
 int main() {
 	glfwInit();
@@ -149,7 +161,6 @@ int main() {
 	// Set up vertex data (and buffer(s)) and attribute pointers
 
 	
-
 	// use with Perspective Projection
 	float vertices[] = {
 		-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,0.0f,//Front
@@ -194,8 +205,6 @@ int main() {
 		-0.5f,  0.5f,  0.5f, 1.0f, 0.2f,0.5f,
 		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
 	};
-
-
 
 
 	GLuint VBO, VAO;
@@ -274,8 +283,8 @@ int main() {
 		glBindVertexArray(VAO);
 	
 	    model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); //Se agregan para hacer la mesa
+		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f)); // Mesa
 
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -285,14 +294,15 @@ int main() {
 		// DIBUJAR 4 PATAS
 		///////////////////////////////
 
-		/*DibujarPata(VAO, modelLoc, 6.0f, 0.0f, 2.0f);
-		DibujarPata(VAO, modelLoc, -6.0f, 0.0f, -2.0f);
-		DibujarPata(VAO, modelLoc, 2.0f, 0.0f, -2.0f);
-		DibujarPata(VAO, modelLoc, -2.0f, 0.0f,2.0f);*/
+		//dibujarpata(VAO, modelLoc, 6.0f, 0.0f, 2.0f);
+		//dibujarpata(VAO, modelLoc, -6.0f, 0.0f, -2.0f);
+		//dibujarpata(VAO, modelLoc, 2.0f, 0.0f, -2.0f);
+		//dibujarpata(VAO, modelLoc, -2.0f, 0.0f,2.0f);
 
-		//DibujarPatas(VAO, modelLoc, 6, 4.0f, 4.0f);
+		dibujarpatas(VAO, modelLoc, 4, 7.0f, 4.5f); 
 
-		DibujarPatas(VAO, modelLoc, 10, 4.0f);
+		//dibujarpatas(VAO, modelLoc, 10, 4.0f);
+		//dibujarpatas(VAO, modelLoc, 4, 1.3f, 0.8f);
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	
@@ -339,5 +349,3 @@ int main() {
 	 if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
 		 rotZ -= 0.4f;
  }
-
-
