@@ -1,4 +1,32 @@
-﻿LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+﻿  KeyFrames.cpp
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(293,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(333,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(333,20): warning C4244:         with
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(333,20): warning C4244:         [
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(333,20): warning C4244:             T=float
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(333,20): warning C4244:         ]
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(334,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(334,20): warning C4244:         with
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(334,20): warning C4244:         [
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(334,20): warning C4244:             T=float
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(334,20): warning C4244:         ]
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(335,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(335,20): warning C4244:         with
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(335,20): warning C4244:         [
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(335,20): warning C4244:             T=float
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(335,20): warning C4244:         ]
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(263,18): warning C4101: 'EBO': variable local sin referencia
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(507,14): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(512,14): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(517,14): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(522,14): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(702,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(703,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(707,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(708,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(710,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\dleon\LAB-Computacion-Grafica\configCGIH12\KeyFrames.cpp(711,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
 soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(etc1_utils.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\dleon\LAB-Computacion-Grafica\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'C:\Users\dleon\LAB-Computacion-Grafica\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
